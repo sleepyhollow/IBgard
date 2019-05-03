@@ -1,8 +1,21 @@
-﻿@{
+﻿@model Api
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container" style="margin: 50px">
+    <div class="row">
+        <div class="col-12">
+            <p>@Model.Data().GetIntervalsGoResult.Intervals[0].BeginTime</p>
+            <div id="tester" style="width: 600px; height: 250px;"></div>
+        </div>
+    </div>
 </div>
+<script>
+    TESTER = document.getElementById('tester');
+    Plotly.plot( TESTER, [{
+        x: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],
+        y: [@Model.Posture()] }], {
+        margin: { t: 50 } } );
+</script>
